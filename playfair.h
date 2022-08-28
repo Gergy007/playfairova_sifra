@@ -7,6 +7,8 @@
 
 #define MAKRO "ABCDEFGHIJKLMNOPQRSTUVXYZ"
 
+void print_array(char *array);
+void edit_array(char *array, const char* text);
 char* playfair_encrypt(const char* key, const char* text);
 char* playfair_decrypt(const char* key, const char* text);
 
