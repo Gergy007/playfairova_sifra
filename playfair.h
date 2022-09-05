@@ -5,11 +5,14 @@
 #ifndef PLAYFAIROVA_SIFRA_PLAYFAIR_H
 #define PLAYFAIROVA_SIFRA_PLAYFAIR_H
 
-#define MAKRO "ABCDEFGHIJKLMNOPQRSTUVXYZ"
+#define MAKRO "ABCDEFGHIJKLMNOPQRSTUVXYZW"
 
-void print_array(char *array);
-void edit_array(char *array, const char* text);
+char arr[5][5];
+
 char* playfair_encrypt(const char* key, const char* text);
 char* playfair_decrypt(const char* key, const char* text);
+void print_array(char *array);
+void edit_array(char *array, const char* key);
+
 
 #endif //PLAYFAIROVA_SIFRA_PLAYFAIR_H

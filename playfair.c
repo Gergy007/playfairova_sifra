@@ -7,11 +7,7 @@
 
 char* playfair_encrypt(const char* key, const char* text)
 {
-    size_t dlzka_textu = strlen(text);
-    size_t i;
-    size_t j;
-    char arr[5][5];
-    edit_array((char *)arr,text);
+    edit_array((char *)arr,key);
     print_array((char*)arr);
 
     return "TREBA DOKONCIT!!!";
@@ -32,21 +28,28 @@ void print_array(char *array)
     }
 }
 
-void edit_array(char *array, const char* text)
+void edit_array(char *array, const char* key)
 {
-    int dlzka_textu = strlen(text);
+    int dlzka_textu = strlen(key);
     char *i;
     int p = 0;
+    int poc = 0; //pocita kolko-krat sa preskocilo pismeno
     for(i=array;i<(array+25);++i,++p)
     {
         if(p == dlzka_textu)
         {
             break;
         }
-        *i = *(text+p);
+        if(strchr(array,*(key+p)) == NULL)
+        {
+            *i = *(key+p);
+            continue;
+        }
+        ++poc;
+        --i;
     }
 
-    for(;p<25;++p)
+    for(p=dlzka_textu-poc;p<25;++p)
     {
         for(int j=0;j<25;++j)
         {
