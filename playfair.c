@@ -3,6 +3,7 @@
 //
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "playfair.h"
 
 char* playfair_encrypt(const char* key, const char* text)
@@ -40,9 +41,9 @@ void edit_array(char *array, const char* key)
         {
             break;
         }
-        if(strchr(array,*(key+p)) == NULL)
+        if(((strchr(array,*(key+p)) == NULL) && (strchr(array,*(key+p)+32) == NULL) && (strchr(array,*(key+p)-32) == NULL)) && (*(key+p) != ' '))
         {
-            *i = *(key+p);
+            *i = toupper(*(key+p));
             continue;
         }
         ++poc;
@@ -53,7 +54,7 @@ void edit_array(char *array, const char* key)
     {
         for(int j=0;j<25;++j)
         {
-            if((strchr(array,MAKRO[j])) == NULL)
+            if((strchr(array,MAKRO[j]) == NULL) && (strchr(array,MAKRO[j]+32) == NULL) && (strchr(array,MAKRO[j]-32) == NULL))
             {
                 *(array+p) =MAKRO[j];
                 break;
